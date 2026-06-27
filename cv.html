@@ -1,0 +1,732 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Rashiq V M — IT Support</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+  --accent: #c94e0a;
+  --accent-light: #e8601a;
+  --accent-dim: #fdf0ea;
+  --dark: #111010;
+  --text: #1e1e1e;
+  --muted: #666;
+  --line: #e8e2de;
+  --bg: #f7f5f3;
+  --white: #fff;
+}
+
+body {
+  font-family: 'Inter', sans-serif;
+  background: var(--bg);
+  color: var(--text);
+  font-size: 13px;
+  line-height: 1.6;
+}
+
+.page {
+  max-width: 900px;
+  margin: 36px auto;
+  background: var(--white);
+  box-shadow: 0 4px 40px rgba(0,0,0,0.10);
+  border-radius: 4px;
+  overflow: hidden;
+}
+
+/* ── HERO HEADER ── */
+.hero {
+  background: var(--dark);
+  padding: 44px 52px 36px;
+  position: relative;
+  overflow: hidden;
+}
+
+.hero::before {
+  content: '';
+  position: absolute;
+  top: 0; right: 0;
+  width: 340px; height: 100%;
+  background: linear-gradient(135deg, transparent 40%, rgba(201,78,10,0.12) 100%);
+  pointer-events: none;
+}
+
+.hero::after {
+  content: '';
+  position: absolute;
+  bottom: 0; left: 0; right: 0;
+  height: 3px;
+  background: linear-gradient(90deg, var(--accent), var(--accent-light), transparent);
+}
+
+.hero-top {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 32px;
+}
+
+.hero-left {}
+
+.hero-name {
+  font-size: 42px;
+  font-weight: 900;
+  color: #fff;
+  letter-spacing: -0.03em;
+  line-height: 1;
+}
+
+.hero-name span { color: var(--accent); }
+
+.hero-role {
+  margin-top: 8px;
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: rgba(255,255,255,0.45);
+}
+
+.hero-role span {
+  color: var(--accent-light);
+}
+
+.hero-summary {
+  margin-top: 18px;
+  font-size: 13px;
+  line-height: 1.75;
+  color: rgba(255,255,255,0.5);
+  max-width: 540px;
+}
+
+.hero-right {
+  flex-shrink: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 8px;
+}
+
+.contact-chip {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 12px;
+  color: rgba(255,255,255,0.6);
+  white-space: nowrap;
+}
+
+.contact-chip svg {
+  width: 13px; height: 13px;
+  fill: var(--accent);
+  flex-shrink: 0;
+}
+
+.portfolio-btn {
+  margin-top: 8px;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  background: rgba(201,78,10,0.18);
+  border: 1px solid rgba(201,78,10,0.4);
+  border-radius: 20px;
+  padding: 6px 14px;
+  color: var(--accent-light);
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.05em;
+  text-decoration: none;
+  transition: background 0.2s;
+}
+.portfolio-btn:hover { background: rgba(201,78,10,0.30); }
+
+/* ── META BAR ── */
+.meta-bar {
+  background: var(--accent);
+  padding: 11px 52px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.meta-item {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 11.5px;
+  font-weight: 500;
+  color: rgba(255,255,255,0.80);
+  letter-spacing: 0.03em;
+  flex: 1;
+  justify-content: center;
+}
+
+.meta-item:first-child { justify-content: flex-start; }
+.meta-item:last-child  { justify-content: flex-end; }
+
+.meta-item strong {
+  color: #fff;
+  font-weight: 700;
+}
+
+.meta-divider {
+  width: 1px;
+  height: 16px;
+  background: rgba(255,255,255,0.25);
+  flex-shrink: 0;
+}
+
+/* ── BODY ── */
+.body {
+  display: grid;
+  grid-template-columns: 1fr 220px;
+  gap: 0;
+}
+
+.col-main {
+  padding: 36px 40px 40px 52px;
+  border-right: 1px solid var(--line);
+}
+
+.col-side {
+  padding: 36px 28px 40px;
+}
+
+/* ── SECTION HEADING ── */
+.sec-head {
+  font-size: 9px;
+  font-weight: 800;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--accent);
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 18px;
+}
+
+.sec-head::after {
+  content: '';
+  flex: 1;
+  height: 1px;
+  background: var(--line);
+}
+
+section { margin-bottom: 32px; }
+section:last-child { margin-bottom: 0; }
+
+/* ── EXPERIENCE ── */
+.exp-item {
+  padding-bottom: 22px;
+  margin-bottom: 22px;
+  border-bottom: 1px solid var(--line);
+}
+.exp-item:last-child { border-bottom: none; padding-bottom: 0; margin-bottom: 0; }
+
+.exp-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 12px;
+  margin-bottom: 2px;
+}
+
+.exp-company {
+  font-size: 14px;
+  font-weight: 700;
+  color: var(--dark);
+  letter-spacing: -0.01em;
+}
+
+.exp-period {
+  font-size: 11px;
+  font-weight: 600;
+  color: var(--accent);
+  background: var(--accent-dim);
+  padding: 2px 9px;
+  border-radius: 20px;
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+
+.exp-role-loc {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 10px;
+}
+
+.exp-role {
+  font-size: 11px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--accent-light);
+}
+
+.exp-loc {
+  font-size: 11px;
+  color: var(--muted);
+}
+
+.exp-loc::before { content: '·'; margin-right: 8px; color: var(--line); }
+
+.exp-bullets {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.exp-bullets li {
+  font-size: 12.5px;
+  color: #4a4a4a;
+  padding-left: 14px;
+  position: relative;
+  line-height: 1.55;
+}
+
+.exp-bullets li::before {
+  content: '▸';
+  position: absolute;
+  left: 0;
+  color: var(--accent);
+  font-size: 10px;
+  top: 2px;
+}
+
+/* ── EDUCATION ── */
+.edu-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 10px;
+  padding: 12px 14px;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  margin-bottom: 8px;
+  background: var(--bg);
+}
+.edu-item:last-child { margin-bottom: 0; }
+
+.edu-degree { font-size: 13px; font-weight: 600; color: var(--dark); }
+.edu-school { font-size: 11px; color: var(--muted); margin-top: 2px; }
+.edu-badge {
+  font-size: 10px;
+  font-weight: 700;
+  color: var(--accent);
+  background: var(--accent-dim);
+  padding: 2px 9px;
+  border-radius: 20px;
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+
+/* ── SIDE COLUMN ── */
+.side-sec { margin-bottom: 28px; }
+.side-sec:last-child { margin-bottom: 0; }
+
+.side-head {
+  font-size: 9px;
+  font-weight: 800;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--accent);
+  padding-bottom: 8px;
+  border-bottom: 1px solid var(--line);
+  margin-bottom: 14px;
+}
+
+/* skills */
+.skill-cat-label {
+  font-size: 10px;
+  font-weight: 700;
+  color: var(--muted);
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  margin-bottom: 6px;
+  margin-top: 12px;
+}
+.skill-cat-label:first-child { margin-top: 0; }
+
+.tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 5px;
+}
+
+.tag {
+  font-size: 10.5px;
+  font-weight: 500;
+  background: var(--bg);
+  border: 1px solid var(--line);
+  border-radius: 4px;
+  padding: 2px 7px;
+  color: var(--text);
+}
+
+/* languages */
+.lang-row {
+  margin-bottom: 10px;
+}
+
+.lang-top {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 4px;
+}
+
+.lang-name { font-size: 12px; font-weight: 500; color: var(--dark); }
+.lang-lvl { font-size: 10px; color: var(--muted); }
+
+.lang-bar {
+  height: 3px;
+  background: var(--line);
+  border-radius: 2px;
+  overflow: hidden;
+}
+
+.lang-fill {
+  height: 100%;
+  background: linear-gradient(90deg, var(--accent), var(--accent-light));
+  border-radius: 2px;
+}
+
+/* personal */
+.personal-row {
+  display: flex;
+  justify-content: space-between;
+  padding: 6px 0;
+  border-bottom: 1px solid var(--line);
+  font-size: 12px;
+}
+.personal-row:last-child { border-bottom: none; }
+.personal-row span:first-child { color: var(--muted); }
+.personal-row span:last-child { font-weight: 600; color: var(--dark); }
+
+@media print {
+  body { background: white; }
+  .page { box-shadow: none; margin: 0; border-radius: 0; }
+}
+
+/* ── FOOTER ── */
+.footer-bar {
+  background: #fff;
+  border-top: 1px solid var(--line);
+  padding: 32px 48px 28px;
+  text-align: center;
+  border-radius: 0 0 4px 4px;
+}
+
+.footer-bar h4 {
+  font-family: 'Inter', sans-serif;
+  font-weight: 800;
+  font-size: 15px;
+  color: #111;
+  margin-bottom: 16px;
+}
+
+.footer-links {
+  display: flex;
+  justify-content: center;
+  gap: 24px;
+  flex-wrap: wrap;
+}
+
+.footer-links a {
+  text-decoration: none;
+  color: #555;
+  font-size: 14px;
+  transition: color 0.2s;
+}
+
+.footer-links a:hover { color: var(--accent); }
+
+.footer-socials {
+  display: flex;
+  justify-content: center;
+  gap: 16px;
+  margin-bottom: 24px;
+}
+
+.footer-socials a {
+  width: 42px;
+  height: 42px;
+  border-radius: 50%;
+  border: 1.5px solid var(--accent);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--dark);
+  font-size: 16px;
+  text-decoration: none;
+  transition: background 0.3s ease, color 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.footer-socials a:hover {
+  background: var(--accent);
+  color: #fff;
+  transform: scale(1.18);
+  box-shadow: 0 6px 18px rgba(201,78,10,0.28);
+}
+
+.footer-copy {
+  margin-top: 24px;
+  color: #999;
+  font-size: 12px;
+  padding-top: 18px;
+  border-top: 1px solid var(--line);
+  line-height: 1.6;
+}
+</style>
+</head>
+<body>
+<div class="page">
+
+  <!-- HERO -->
+  <header class="hero">
+    <div class="hero-top">
+      <div class="hero-left">
+        <h1 class="hero-name">Rashiq <span>V M</span></h1>
+        <div class="hero-role">IT <span>Support</span></div>
+        <p class="hero-summary">Enthusiastic IT professional with a passion for resolving technical issues and delivering exceptional customer support. Proven success in hardware, software troubleshooting, and network infrastructure maintenance for optimal system reliability.</p>
+      </div>
+      <div class="hero-right">
+        <div class="contact-chip">
+          <svg viewBox="0 0 24 24"><path d="M6.6 10.8c1.4 2.8 3.8 5.1 6.6 6.6l2.2-2.2c.3-.3.7-.4 1-.2 1.1.4 2.3.6 3.6.6.6 0 1 .4 1 1V20c0 .6-.4 1-1 1-9.4 0-17-7.6-17-17 0-.6.4-1 1-1h3.5c.6 0 1 .4 1 1 0 1.3.2 2.5.6 3.6.1.3 0 .7-.2 1L6.6 10.8z"/></svg>
+          +91 9843716552
+        </div>
+        <div class="contact-chip">
+          <svg viewBox="0 0 24 24"><path d="M20 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/></svg>
+          rashiq.vm.78@gmail.com
+        </div>
+        <div class="contact-chip">
+          <svg viewBox="0 0 24 24"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg>
+          Coimbatore, India
+        </div>
+
+      </div>
+    </div>
+  </header>
+
+  <!-- META BAR -->
+  <div class="meta-bar">
+    <div class="meta-item">Nationality: <strong>Indian</strong></div>
+    <div class="meta-divider"></div>
+    <div class="meta-item">Gender: <strong>Male</strong></div>
+    <div class="meta-divider"></div>
+    <div class="meta-item">Status: <strong>Single</strong></div>
+    <div class="meta-divider"></div>
+    <div class="meta-item">Experience: <strong>8+ Years</strong></div>
+  </div>
+
+  <!-- BODY -->
+  <div class="body">
+
+    <!-- MAIN COLUMN -->
+    <div class="col-main">
+
+      <!-- EXPERIENCE -->
+      <section>
+        <div class="sec-head">Professional Experience</div>
+
+        <div class="exp-item">
+          <div class="exp-header">
+            <div class="exp-company">NSE IT Limited</div>
+            <div class="exp-period">2021 – Present</div>
+          </div>
+          <div class="exp-role-loc">
+            <span class="exp-role">IT Network Support</span>
+            <span class="exp-loc">Coimbatore</span>
+          </div>
+          <ul class="exp-bullets">
+            <li>Provided network and remote access support across the organization.</li>
+            <li>Produced procedural documentation and relevant technical reports.</li>
+            <li>Maintained network devices and peripherals for continuous uptime.</li>
+            <li>Identified and resolved connectivity issues promptly.</li>
+            <li>Installed and configured company-related applications.</li>
+          </ul>
+        </div>
+
+        <div class="exp-item">
+          <div class="exp-header">
+            <div class="exp-company">AL Sharah Computers LLC</div>
+            <div class="exp-period">2018 – 2020</div>
+          </div>
+          <div class="exp-role-loc">
+            <span class="exp-role">Computer Technician</span>
+            <span class="exp-loc">Dubai – Al Khawaneej</span>
+          </div>
+          <ul class="exp-bullets">
+            <li>Installed and configured hardware, software, networks, printers, and scanners.</li>
+            <li>Troubleshot system and network problems, diagnosing hardware and software faults.</li>
+            <li>Configured, installed, and upgraded software and hardware components.</li>
+            <li>Repaired and replaced equipment; tested and evaluated new technology.</li>
+            <li>Conducted electrical safety checks on computer equipment.</li>
+          </ul>
+        </div>
+
+        <div class="exp-item">
+          <div class="exp-header">
+            <div class="exp-company">Sri Ram Value Added Service</div>
+            <div class="exp-period">2017 – 2018</div>
+          </div>
+          <div class="exp-role-loc">
+            <span class="exp-role">IT Assistant Support</span>
+            <span class="exp-loc">Chennai</span>
+          </div>
+          <ul class="exp-bullets">
+            <li>Handled incoming user calls and generated activity reports.</li>
+            <li>Recorded events, problems, and resolutions in structured logs.</li>
+            <li>Suggested and implemented solutions when errors occurred.</li>
+          </ul>
+        </div>
+      </section>
+
+      <!-- EDUCATION -->
+      <section>
+        <div class="sec-head">Education</div>
+        <div class="edu-item">
+          <div>
+            <div class="edu-degree">BSc. Information Technology</div>
+            <div class="edu-school">Bharathiar University — Tamilnadu, Coimbatore</div>
+          </div>
+          <div class="edu-badge">2016</div>
+        </div>
+      </section>
+
+      <!-- TRAINING -->
+      <section>
+        <div class="sec-head">Training & Certifications</div>
+        <div class="edu-item">
+          <div>
+            <div class="edu-degree">Cisco Certified Network Associate</div>
+            <div class="edu-school">Sansbound Network School — Chennai</div>
+          </div>
+          <div class="edu-badge">2017</div>
+        </div>
+        <div class="edu-item">
+          <div>
+            <div class="edu-degree">Fundamentals of Digital Marketing</div>
+            <div class="edu-school">Google</div>
+          </div>
+          <div class="edu-badge">2021</div>
+        </div>
+        <div class="edu-item">
+          <div>
+            <div class="edu-degree">HP LIFE Certificate</div>
+            <div class="edu-school">HP Skill Shop</div>
+          </div>
+          <div class="edu-badge">2025</div>
+        </div>
+      </section>
+
+    </div>
+
+    <!-- SIDE COLUMN -->
+    <div class="col-side">
+
+      <div class="side-sec">
+        <div class="side-head">Skills</div>
+
+        <div class="skill-cat-label">Software</div>
+        <div class="tags">
+          <span class="tag">MS Office</span>
+          <span class="tag">Antivirus</span>
+          <span class="tag">Firewall</span>
+          <span class="tag">Google Cloud</span>
+          <span class="tag">AnyDesk</span>
+          <span class="tag">TeamViewer</span>
+          <span class="tag">AOMEI Backup</span>
+          <span class="tag">Adobe Suite</span>
+          <span class="tag">WordPress</span>
+          <span class="tag">Google Sites</span>
+        </div>
+
+        <div class="skill-cat-label">Operating Systems</div>
+        <div class="tags">
+          <span class="tag">Windows</span>
+          <span class="tag">macOS</span>
+          <span class="tag">Android</span>
+          <span class="tag">Linux</span>
+        </div>
+
+        <div class="skill-cat-label">Programming</div>
+        <div class="tags">
+          <span class="tag">HTML</span>
+          <span class="tag">Java</span>
+          <span class="tag">Android SDK</span>
+          <span class="tag">Java JDK</span>
+        </div>
+
+        <div class="skill-cat-label">Hardware</div>
+        <div class="tags">
+          <span class="tag">Dell</span>
+          <span class="tag">HP</span>
+          <span class="tag">Acer</span>
+          <span class="tag">Mac</span>
+          <span class="tag">Asus</span>
+          <span class="tag">Lenovo</span>
+          <span class="tag">Toshiba</span>
+        </div>
+
+        <div class="skill-cat-label">Additional</div>
+        <div class="tags">
+          <span class="tag">CCTV Install</span>
+          <span class="tag">Electronics Repair</span>
+        </div>
+      </div>
+
+      <div class="side-sec">
+        <div class="side-head">Languages</div>
+        <div class="lang-row">
+          <div class="lang-top"><span class="lang-name">Malayalam</span><span class="lang-lvl">Native</span></div>
+          <div class="lang-bar"><div class="lang-fill" style="width:100%"></div></div>
+        </div>
+        <div class="lang-row">
+          <div class="lang-top"><span class="lang-name">Tamil</span><span class="lang-lvl">Native</span></div>
+          <div class="lang-bar"><div class="lang-fill" style="width:100%"></div></div>
+        </div>
+        <div class="lang-row">
+          <div class="lang-top"><span class="lang-name">English</span><span class="lang-lvl">Proficient</span></div>
+          <div class="lang-bar"><div class="lang-fill" style="width:80%"></div></div>
+        </div>
+        <div class="lang-row">
+          <div class="lang-top"><span class="lang-name">Arabic</span><span class="lang-lvl">Advanced</span></div>
+          <div class="lang-bar"><div class="lang-fill" style="width:65%"></div></div>
+        </div>
+        <div class="lang-row">
+          <div class="lang-top"><span class="lang-name">Hindi</span><span class="lang-lvl">Advanced</span></div>
+          <div class="lang-bar"><div class="lang-fill" style="width:65%"></div></div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- FOOTER -->
+  <div class="footer-bar">
+    <div class="footer-socials">
+      <a href="https://www.linkedin.com/in/rashiqvmcv" target="_blank" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+      <a href="#" aria-label="GitHub"><i class="fab fa-github"></i></a>
+      <a href="#" aria-label="Google"><i class="fab fa-google"></i></a>
+    </div>
+    <h4>Quick Navigation</h4>
+    <div class="footer-links">
+      <a href="index.html">Home</a>
+      <a href="about.html">About</a>
+      <a href="index.html#projects">My Projects</a>
+      <a href="Expertise.html">Expertise</a>
+    </div>
+    <div class="footer-copy">
+      Copyright © Rashiq. All rights reserved | Privacy policy | Terms of Use
+    </div>
+  </div>
+
+</div>
+</body>
+</html>

@@ -1,0 +1,799 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=1180">
+<title>Services – RASHIQ</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800;900&family=Nunito:wght@400;700;800;900&family=Nunito+Sans:wght@400;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+
+  :root {
+    --cream: #ffffff;
+    --blue-btn: #3b6ef5;
+    --orange-accent: #f2623a;
+    --purple-tri: #7c3aed;
+    --label-green: #3cba78;
+    --text-dark: #111111;
+    --text-mid: #555555;
+    --px: 48px; /* consistent horizontal padding token */
+  }
+
+  body {
+    font-family: 'Nunito Sans', sans-serif;
+    background: var(--cream);
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 0;
+    overflow-x: hidden;
+  }
+
+  /* ── LAYOUT SHELL ── */
+  /* page-wrapper fills viewport width so footer can go edge-to-edge */
+  .page-wrapper {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  /* Constrain readable content to 1180px */
+  .page-header,
+  .services-wrapper {
+    width: 100%;
+    max-width: 1180px;
+  }
+
+  .back-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    margin-top: 20px;
+    padding: 12px 24px;
+    background: #c94e0a;
+    color: #fff;
+    font-family: 'Inter', sans-serif;
+    font-size: 14px;
+    font-weight: 700;
+    border-radius: 50px;
+    text-decoration: none;
+    transition: background 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
+    box-shadow: 0 4px 14px rgba(201,78,10,0.35);
+  }
+  .back-btn:hover {
+    background: #a83d07;
+    transform: translateY(-2px);
+    box-shadow: 0 8px 20px rgba(201,78,10,0.45);
+  }
+
+  /* ── PAGE HEADER ── */
+  .page-header {
+    padding: 56px var(--px) 48px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    animation: fadeUp 0.6s ease both;
+  }
+
+  .page-header-icon {
+    width: 100px;
+    height: 120px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 20px;
+    animation: floatIcon 3s ease-in-out infinite;
+    flex-shrink: 0;
+  }
+
+  @keyframes floatIcon {
+    0%, 100% { transform: translateY(0); }
+    50%       { transform: translateY(-8px); }
+  }
+
+  .page-header-label {
+    font-family: 'Inter', sans-serif;
+    font-size: 11px;
+    font-weight: 800;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--label-green);
+    margin-bottom: 12px;
+  }
+
+  .page-header h1 {
+    font-family: 'Inter', sans-serif;
+    font-size: 52px;
+    font-weight: 900;
+    color: #5a0a00;
+    letter-spacing: -1px;
+    line-height: 1.1;
+    margin-bottom: 16px;
+  }
+
+  .page-header h1 span { color: var(--orange-accent); }
+
+  .page-header p {
+    font-size: 17px;
+    color: var(--text-mid);
+    line-height: 1.65;
+    max-width: 560px;
+  }
+
+  /* ── SERVICES WRAPPER ── */
+  .services-wrapper {
+    padding: 0 var(--px) 64px;
+    display: flex;
+    flex-direction: column;
+    gap: 56px;
+  }
+
+  /* ── SERVICE CATEGORY ── */
+  .service-category {
+    animation: fadeUp 0.7s ease both;
+  }
+  .service-category:nth-child(1) { animation-delay: 0.10s; }
+  .service-category:nth-child(2) { animation-delay: 0.25s; }
+  .service-category:nth-child(3) { animation-delay: 0.40s; }
+  .service-category:nth-child(4) { animation-delay: 0.55s; }
+  .service-category:nth-child(5) { animation-delay: 0.70s; }
+  .service-category:nth-child(6) { animation-delay: 0.85s; }
+
+  .category-header {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    margin-bottom: 24px;
+    padding-bottom: 18px;
+    border-bottom: 2px solid rgba(0,0,0,0.07);
+  }
+
+  .category-num {
+    width: 44px;
+    height: 44px;
+    min-width: 44px;
+    border-radius: 12px;
+    background: #c94e0a;
+    color: #fff;
+    font-family: 'Inter', sans-serif;
+    font-weight: 900;
+    font-size: 18px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 4px 12px rgba(201,78,10,0.3);
+  }
+
+  .category-title-wrap { min-width: 0; } /* allow text to truncate/wrap correctly */
+  .category-title-wrap h2 {
+    font-family: 'Inter', sans-serif;
+    font-size: 24px;
+    font-weight: 900;
+    color: #5a0a00;
+    letter-spacing: -0.4px;
+    line-height: 1.2;
+  }
+  .category-title-wrap p {
+    font-size: 13px;
+    color: var(--text-mid);
+    margin-top: 3px;
+    line-height: 1.5;
+  }
+
+  /* ── SERVICE ITEMS GRID ── */
+  /* Desktop: 5-up for section 1, 4-up for others via auto-fill */
+  .service-items {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(190px, 1fr));
+    gap: 16px;
+  }
+
+  .service-item {
+    background: #fff;
+    border-radius: 18px;
+    padding: 24px 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 12px;
+    box-shadow: 0 4px 16px rgba(0,0,0,0.06);
+    border: 1.5px solid transparent;
+    transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .service-item::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(135deg, rgba(59,110,245,0.04), rgba(124,58,237,0.04));
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    border-radius: 18px;
+  }
+
+  .service-item:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 12px 28px rgba(0,0,0,0.10);
+    border-color: rgba(59,110,245,0.2);
+  }
+  .service-item:hover::before { opacity: 1; }
+
+  .service-icon {
+    width: 48px;
+    height: 48px;
+    min-width: 48px;
+    border-radius: 13px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 20px;
+  }
+
+  .service-item h4 {
+    font-family: 'Inter', sans-serif;
+    font-size: 14.5px;
+    font-weight: 800;
+    color: var(--text-dark);
+    line-height: 1.35;
+  }
+
+  /* Icon color themes */
+  .icon-blue   { background: #EEF2FF; color: #3b6ef5; }
+  .icon-orange { background: #FFF0EB; color: #f2623a; }
+  .icon-green  { background: #E8F9EF; color: #22c55e; }
+  .icon-purple { background: #F3EEFF; color: #7c3aed; }
+  .icon-yellow { background: #FFFBEA; color: #d4a017; }
+  .icon-teal   { background: #E6FAF8; color: #0d9488; }
+
+  /* Sub-category labels inside a service category */
+  .sub-category-label {
+    font-family: 'Inter', sans-serif;
+    font-size: 11px;
+    font-weight: 800;
+    letter-spacing: 1.8px;
+    text-transform: uppercase;
+    color: var(--text-mid);
+    margin-bottom: 12px;
+    padding-left: 2px;
+  }
+
+  /* ── FOOTER BAR ── */
+  .footer-bar {
+    width: 100%;
+    background: #fff;
+    padding: 32px 48px 28px;
+    text-align: center;
+    margin-top: 0;
+    flex-shrink: 0;
+    overflow: hidden;
+  }
+  .footer-bar h4 {
+    font-family: 'Inter', sans-serif;
+    font-weight: 800;
+    font-size: 15px;
+    color: #111;
+    margin-bottom: 16px;
+  }
+  .footer-links {
+    display: flex;
+    justify-content: center;
+    gap: 24px;
+    flex-wrap: wrap;
+  }
+  .footer-links a {
+    text-decoration: none;
+    color: #555;
+    font-size: 14px;
+    transition: color 0.2s;
+  }
+  .footer-links a:hover { color: var(--orange-accent); }
+
+  .footer-socials {
+    display: flex;
+    justify-content: center;
+    gap: 16px;
+    margin-bottom: 24px;
+  }
+  .footer-socials a {
+    width: 42px;
+    height: 42px;
+    border-radius: 50%;
+    border: 1.5px solid var(--orange-accent);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--text-dark);
+    font-size: 16px;
+    text-decoration: none;
+    transition: background 0.3s ease, color 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
+  }
+  .footer-socials a:hover {
+    background: var(--orange-accent);
+    color: #fff;
+    transform: scale(1.18);
+    box-shadow: 0 6px 18px rgba(201,78,10,0.28);
+  }
+
+  .footer-copy {
+    margin-top: 24px;
+    color: #999;
+    font-size: 12px;
+    padding-top: 18px;
+    line-height: 1.6;
+    position: relative;
+  }
+  .footer-copy::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: -9999px;
+    right: -9999px;
+    height: 1px;
+    background: #ddd;
+  }
+
+  /* ── ANIMATIONS ── */
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(22px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+
+  /* ══════════════════════════════════════
+     RESPONSIVE
+  ══════════════════════════════════════ */
+
+  /* Tablet – 1024px */
+  @media (max-width: 1024px) {
+    :root { --px: 36px; }
+    .page-header h1 { font-size: 44px; }
+    .service-items { grid-template-columns: repeat(auto-fill, minmax(180px, 1fr)); }
+  }
+
+  /* Large mobile / small tablet – 768px */
+  @media (max-width: 768px) {
+    :root { --px: 20px; }
+    .page-header { padding-top: 40px; padding-bottom: 36px; }
+    .page-header h1 { font-size: 36px; }
+    .page-header p  { font-size: 15px; }
+    .services-wrapper { gap: 40px; padding-bottom: 48px; }
+    .category-title-wrap h2 { font-size: 20px; }
+    .service-items { grid-template-columns: repeat(2, 1fr); gap: 14px; }
+  }
+
+  /* Mobile – 480px */
+  @media (max-width: 480px) {
+    :root { --px: 16px; }
+    .page-header { padding-top: 32px; padding-bottom: 28px; }
+    .page-header-icon { width: 64px; height: 64px; font-size: 26px; border-radius: 18px; }
+    .page-header h1 { font-size: 30px; }
+    .page-header p  { font-size: 14px; }
+    .category-header { gap: 12px; }
+    .category-num { width: 36px; height: 36px; min-width: 36px; font-size: 15px; border-radius: 10px; }
+    .category-title-wrap h2 { font-size: 17px; }
+    .category-title-wrap h2 i { font-size: 15px; }
+    .category-title-wrap p { font-size: 12px; }
+    .service-items { grid-template-columns: repeat(2, 1fr); gap: 12px; }
+    .service-item { padding: 18px 14px; gap: 10px; border-radius: 14px; }
+    .service-icon { width: 42px; height: 42px; min-width: 42px; font-size: 17px; border-radius: 11px; }
+    .service-item h4 { font-size: 13px; }
+    .services-wrapper { gap: 32px; padding-bottom: 36px; }
+    .footer-bar { padding: 24px var(--px); }
+    .footer-bar .links { gap: 16px; }
+  }
+
+  /* Very small – 360px */
+  @media (max-width: 360px) {
+    .service-items { grid-template-columns: 1fr; }
+    .page-header h1 { font-size: 26px; }
+  }
+</style>
+</head>
+<body>
+
+<div class="page-wrapper">
+
+  <!-- PAGE HEADER -->
+  <div class="page-header">
+    <div class="page-header-icon">
+      <svg width="100" height="120" viewBox="0 0 100 120" xmlns="http://www.w3.org/2000/svg">
+        <!-- Ribbon left -->
+        <polygon points="28,78 18,115 38,105 50,115 50,78" fill="#1a8fd1"/>
+        <!-- Ribbon right -->
+        <polygon points="72,78 82,115 62,105 50,115 50,78" fill="#1a8fd1"/>
+        <!-- Badge outer spiky ring -->
+        <polygon points="
+          50,4 56,14 67,10 70,21 82,22 81,34 92,39 87,50
+          92,61 81,66 82,78 70,79 67,90 56,86 50,96
+          44,86 33,90 30,79 18,78 19,66 8,61 13,50
+          8,39 19,34 18,22 30,21 33,10 44,14"
+          fill="#2196f3"/>
+        <!-- Badge inner circle -->
+        <circle cx="50" cy="50" r="28" fill="#42b0f5"/>
+        <!-- White ring -->
+        <circle cx="50" cy="50" r="24" fill="none" stroke="#fff" stroke-width="2"/>
+        <!-- Checkmark -->
+        <polyline points="38,50 46,58 63,40" fill="none" stroke="#fff" stroke-width="4.5" stroke-linecap="round" stroke-linejoin="round"/>
+      </svg>
+    </div>
+    <h1>Expertise</h1>
+    <p>Delivering reliable IT infrastructure, network support, and technology solutions through practical experience and continuous learning.</p>
+    <a href="index.html" class="back-btn"><i class="fas fa-arrow-left"></i> Back to Home</a>
+  </div>
+
+  <!-- SERVICES -->
+  <div class="services-wrapper">
+
+    <!-- 1. IT Solutions -->
+    <div class="service-category">
+      <div class="category-header">
+        <div class="category-num">1</div>
+        <div class="category-title-wrap">
+          <h2>IT Solutions</h2>
+          <p>Comprehensive technical support and end-to-end IT infrastructure management</p>
+        </div>
+      </div>
+      <div class="service-items">
+        <div class="service-item">
+          <div class="service-icon icon-purple"><i class="fas fa-laptop"></i></div>
+          <h4>Hardware Repair &amp; Support</h4>
+        </div>
+        <div class="service-item">
+          <div class="service-icon icon-blue"><i class="fas fa-headset"></i></div>
+          <h4>Technical Support &amp; Help Desk</h4>
+        </div>
+        <div class="service-item">
+          <div class="service-icon icon-green"><i class="fas fa-tachometer-alt"></i></div>
+          <h4>System Performance Tuning</h4>
+        </div>
+        <div class="service-item">
+          <div class="service-icon icon-orange"><i class="fas fa-sitemap"></i></div>
+          <h4>IT Infrastructure Planning</h4>
+        </div>
+        <div class="service-item">
+          <div class="service-icon icon-blue"><i class="fas fa-bug"></i></div>
+          <h4>Software Troubleshooting</h4>
+        </div>
+        <div class="service-item">
+          <div class="service-icon icon-green"><i class="fas fa-network-wired"></i></div>
+          <h4>Network Troubleshooting</h4>
+        </div>
+        <div class="service-item">
+          <div class="service-icon icon-purple"><i class="fas fa-fire-alt"></i></div>
+          <h4>Firewall Configuration</h4>
+        </div>
+      </div>
+    </div>
+
+    <!-- 2. Web Development -->
+    <div class="service-category">
+      <div class="category-header">
+        <div class="category-num">2</div>
+        <div class="category-title-wrap">
+          <h2>Web Development</h2>
+          <p>Premium web experiences built with modern technology and clean code</p>
+        </div>
+      </div>
+      <div class="service-items">
+        <div class="service-item">
+          <div class="service-icon icon-blue"><i class="fas fa-code"></i></div>
+          <h4>Custom Website Development</h4>
+        </div>
+        <div class="service-item">
+          <div class="service-icon icon-orange"><i class="fas fa-id-card"></i></div>
+          <h4>Portfolio Website Design</h4>
+        </div>
+        <div class="service-item">
+          <div class="service-icon icon-green"><i class="fas fa-rocket"></i></div>
+          <h4>Business Landing Pages</h4>
+        </div>
+        <div class="service-item">
+          <div class="service-icon icon-purple"><i class="fas fa-mobile-alt"></i></div>
+          <h4>Responsive Website Design</h4>
+        </div>
+        <div class="service-item">
+          <div class="service-icon icon-yellow"><i class="fas fa-layer-group"></i></div>
+          <h4>Modern SaaS UI Development</h4>
+        </div>
+        <div class="service-item">
+          <div class="service-icon icon-blue"><i class="fas fa-globe"></i></div>
+          <h4>Custom Domain Configuration &amp; DNS Management</h4>
+        </div>
+      </div>
+    </div>
+
+    <!-- 3. Development Tools & Backend -->
+    <div class="service-category">
+      <div class="category-header">
+        <div class="category-num">3</div>
+        <div class="category-title-wrap">
+          <h2>Development Tools &amp; Backend</h2>
+          <p>Robust server-side architecture and efficient development workflows</p>
+        </div>
+      </div>
+      <div class="service-items">
+        <div class="service-item">
+          <div class="service-icon icon-orange"><i class="fas fa-database"></i></div>
+          <h4>Database Design &amp; Management</h4>
+        </div>
+        <div class="service-item">
+          <div class="service-icon icon-blue"><i class="fas fa-plug"></i></div>
+          <h4>REST API Development</h4>
+        </div>
+        <div class="service-item">
+          <div class="service-icon icon-green"><i class="fas fa-cogs"></i></div>
+          <h4>Backend System Architecture</h4>
+        </div>
+        <div class="service-item">
+          <div class="service-icon icon-purple"><i class="fab fa-node-js"></i></div>
+          <h4>Node.js &amp; Server-side Apps</h4>
+        </div>
+      </div>
+    </div>
+
+    <!-- 4. Cloud & Server Setup -->
+    <div class="service-category">
+      <div class="category-header">
+        <div class="category-num">4</div>
+        <div class="category-title-wrap">
+          <h2>Cloud &amp; Server Setup</h2>
+          <p>Expert cloud infrastructure deployment and reliable hosting solutions</p>
+        </div>
+      </div>
+      <div class="service-items">
+        <div class="service-item">
+          <div class="service-icon icon-green"><i class="fas fa-cloud-upload-alt"></i></div>
+          <h4>Cloud Deployment &amp; Hosting</h4>
+        </div>
+        <div class="service-item">
+          <div class="service-icon icon-blue"><i class="fas fa-network-wired"></i></div>
+          <h4>Server Configuration</h4>
+        </div>
+        <div class="service-item">
+          <div class="service-icon icon-orange"><i class="fas fa-shield-alt"></i></div>
+          <h4>Security &amp; SSL Setup</h4>
+        </div>
+        <div class="service-item">
+          <div class="service-icon icon-purple"><i class="fas fa-hdd"></i></div>
+          <h4>Backup &amp; Recovery Systems</h4>
+        </div>
+      </div>
+    </div>
+
+
+    <!-- 5. Software Developer -->
+    <div class="service-category">
+      <div class="category-header">
+        <div class="category-num">5</div>
+        <div class="category-title-wrap">
+          <h2>Software Developer</h2>
+          <p>Tools, frameworks, and platforms powering modern software development workflows</p>
+        </div>
+      </div>
+
+      <!-- Code Editors & IDEs -->
+      <div class="sub-category-label">Code Editors &amp; IDEs</div>
+      <div class="service-items" style="margin-bottom:20px;">
+        <div class="service-item">
+          <div class="service-icon icon-blue"><i class="fas fa-code"></i></div>
+          <h4>Visual Studio Code</h4>
+        </div>
+        <div class="service-item">
+          <div class="service-icon icon-purple"><i class="fas fa-laptop-code"></i></div>
+          <h4>Visual Studio</h4>
+        </div>
+        <div class="service-item">
+          <div class="service-icon icon-green"><i class="fab fa-android"></i></div>
+          <h4>Android Studio</h4>
+        </div>
+      </div>
+
+      <!-- Version Control & Cloud -->
+      <div class="sub-category-label">Version Control &amp; Cloud</div>
+      <div class="service-items" style="margin-bottom:20px;">
+        <div class="service-item">
+          <div class="service-icon icon-orange"><i class="fab fa-github"></i></div>
+          <h4>GitHub</h4>
+        </div>
+        <div class="service-item">
+          <div class="service-icon icon-purple"><i class="fab fa-gitlab"></i></div>
+          <h4>GitLab</h4>
+        </div>
+        <div class="service-item">
+          <div class="service-icon icon-yellow"><i class="fas fa-shield-alt"></i></div>
+          <h4>Cloudflare</h4>
+        </div>
+      </div>
+
+      <!-- Frontend Development -->
+      <div class="sub-category-label">Frontend Development</div>
+      <div class="service-items" style="margin-bottom:20px;">
+        <div class="service-item">
+          <div class="service-icon icon-orange"><i class="fab fa-html5"></i></div>
+          <h4>HTML5</h4>
+        </div>
+        <div class="service-item">
+          <div class="service-icon icon-blue"><i class="fab fa-css3-alt"></i></div>
+          <h4>CSS3</h4>
+        </div>
+        <div class="service-item">
+          <div class="service-icon icon-yellow"><i class="fab fa-js"></i></div>
+          <h4>JavaScript</h4>
+        </div>
+        <div class="service-item">
+          <div class="service-icon icon-teal"><i class="fas fa-wind"></i></div>
+          <h4>Tailwind CSS</h4>
+        </div>
+      </div>
+
+      <!-- Databases -->
+      <div class="sub-category-label">Databases</div>
+      <div class="service-items" style="margin-bottom:20px;">
+        <div class="service-item">
+          <div class="service-icon icon-blue"><i class="fas fa-database"></i></div>
+          <h4>MySQL</h4>
+        </div>
+        <div class="service-item">
+          <div class="service-icon icon-teal"><i class="fas fa-server"></i></div>
+          <h4>PostgreSQL</h4>
+        </div>
+        <div class="service-item">
+          <div class="service-icon icon-green"><i class="fas fa-leaf"></i></div>
+          <h4>MongoDB</h4>
+        </div>
+      </div>
+
+      <!-- DevOps & Cloud -->
+      <div class="sub-category-label">DevOps &amp; Cloud</div>
+      <div class="service-items" style="margin-bottom:20px;">
+        <div class="service-item">
+          <div class="service-icon icon-blue"><i class="fab fa-docker"></i></div>
+          <h4>Docker</h4>
+        </div>
+        <div class="service-item">
+          <div class="service-icon icon-orange"><i class="fas fa-cogs"></i></div>
+          <h4>GitHub Actions</h4>
+        </div>
+      </div>
+
+      <!-- Package Managers -->
+      <div class="sub-category-label">Package Managers</div>
+      <div class="service-items" style="margin-bottom:20px;">
+        <div class="service-item">
+          <div class="service-icon icon-orange"><i class="fab fa-npm"></i></div>
+          <h4>npm</h4>
+        </div>
+        <div class="service-item">
+          <div class="service-icon icon-teal"><i class="fas fa-box"></i></div>
+          <h4>Yarn</h4>
+        </div>
+      </div>
+
+      <!-- Design & Collaboration -->
+      <div class="sub-category-label">Design &amp; Collaboration</div>
+      <div class="service-items" style="margin-bottom:20px;">
+        <div class="service-item">
+          <div class="service-icon icon-purple"><i class="fab fa-figma"></i></div>
+          <h4>Figma</h4>
+        </div>
+        <div class="service-item">
+          <div class="service-icon icon-teal"><i class="fas fa-film"></i></div>
+          <h4>LottieFiles</h4>
+        </div>
+      </div>
+
+      <!-- Terminal & Utilities -->
+      <div class="sub-category-label">Terminal &amp; Utilities</div>
+      <div class="service-items">
+        <div class="service-item">
+          <div class="service-icon icon-purple"><i class="fas fa-terminal"></i></div>
+          <h4>Windows Terminal</h4>
+        </div>
+        <div class="service-item">
+          <div class="service-icon icon-blue"><i class="fas fa-terminal"></i></div>
+          <h4>PowerShell</h4>
+        </div>
+        <div class="service-item">
+          <div class="service-icon icon-orange"><i class="fab fa-git-alt"></i></div>
+          <h4>Git Bash</h4>
+        </div>
+        <div class="service-item">
+          <div class="service-icon icon-green"><i class="fas fa-network-wired"></i></div>
+          <h4>PuTTY</h4>
+        </div>
+        <div class="service-item">
+          <div class="service-icon icon-yellow"><i class="fas fa-exchange-alt"></i></div>
+          <h4>WinSCP</h4>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- 6. Electrical Installation & Maintenance -->
+    <div class="service-category">
+      <div class="category-header">
+        <div class="category-num">6</div>
+        <div class="category-title-wrap">
+          <h2>Electrical Installation &amp; Maintenance</h2>
+          <p>Hands-on electrical, electronics, and instrumentation expertise for reliable systems</p>
+        </div>
+      </div>
+
+      <!-- Electrical Installation & Maintenance -->
+      <div class="sub-category-label">Electrical Installation &amp; Maintenance</div>
+      <div class="service-items" style="margin-bottom:20px;">
+        <div class="service-item">
+          <div class="service-icon icon-yellow"><i class="fas fa-tools"></i></div>
+          <h4>Preventive Maintenance</h4>
+        </div>
+        <div class="service-item">
+          <div class="service-icon icon-orange"><i class="fas fa-exclamation-triangle"></i></div>
+          <h4>Fault Diagnosis &amp; Repair</h4>
+        </div>
+      </div>
+
+      <!-- Electronics -->
+      <div class="sub-category-label">Electronics</div>
+      <div class="service-items" style="margin-bottom:20px;">
+        <div class="service-item">
+          <div class="service-icon icon-blue"><i class="fas fa-microchip"></i></div>
+          <h4>Electronic Circuit Troubleshooting</h4>
+        </div>
+        <div class="service-item">
+          <div class="service-icon icon-orange"><i class="fas fa-fire-alt"></i></div>
+          <h4>Soldering &amp; Desoldering</h4>
+        </div>
+        <div class="service-item">
+          <div class="service-icon icon-green"><i class="fas fa-vials"></i></div>
+          <h4>Component Testing</h4>
+        </div>
+        <div class="service-item">
+          <div class="service-icon icon-purple"><i class="fas fa-plug"></i></div>
+          <h4>Power Supply Repair</h4>
+        </div>
+      </div>
+
+      <!-- Testing & Measuring Instruments -->
+      <div class="sub-category-label">Testing &amp; Measuring Instruments</div>
+      <div class="service-items">
+        <div class="service-item">
+          <div class="service-icon icon-teal"><i class="fas fa-tachometer-alt"></i></div>
+          <h4>Digital Multimeter</h4>
+        </div>
+      </div>
+
+    </div>
+
+  </div><!-- end services-wrapper -->
+
+
+
+
+
+  <div class="footer-bar">
+    <div class="footer-socials">
+      <a href="https://www.linkedin.com/in/rashiqvmcv" target="_blank" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+      <a href="#" aria-label="GitHub"><i class="fab fa-github"></i></a>
+      <a href="#" aria-label="Google"><i class="fab fa-google"></i></a>
+    </div>
+    <h4>Quick Navigation</h4>
+    <div class="footer-links">
+      <a href="index.html">Home</a>
+      <a href="about.html">About</a>
+      <a href="index.html#projects">My Projects</a>
+      <a href="Expertise.html">Expertise</a>
+    </div>
+    <div class="footer-copy">
+      Copyright © Rashiq. All rights reserved | Privacy policy | Terms of Use
+    </div>
+  </div>
+
+</div><!-- end page-wrapper -->
+</body>
+</html>
